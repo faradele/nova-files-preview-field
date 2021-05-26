@@ -2,14 +2,14 @@
 
 namespace Faradele\Files;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Field;
-use Laravel\Nova\Fields\Storable;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Files extends Field
+class Files extends File
 {
-    use Storable;
-
     /**
      * The field's component.
      *
@@ -18,34 +18,33 @@ class Files extends Field
     public $component = 'files';
 
     /**
-     * The meta data for the element.
-     *
-     * @var array
-     */
-    public $meta = [
-        "pathPrefix" => "/storage/",
-        "acceptedTypes" => "image/*",
-    ];
-
-    /**
-     * Other options
+     * Other options.
      *
      * @var array
      */
     public $options = [];
 
     /**
-     * Set other options
+     * Create a new field.
      *
-     * @param array $options options
-     *
-     * @return $this
+     * @param  string  $name
+     * @param  string  $attribute
+     * @param  string|null  $disk
+     * @param  callable|null  $storageCallback
+     * @return void
      */
-    public function options(array $options)
+    public function __construct($name, $attribute = null, $disk = 'public', $storageCallback = null)
     {
-        $this->options = $options;
+        parent::__construct($name, $attribute, $disk, $storageCallback);
 
-        return $this;
+        $this->disk(config('filesystems.default'))
+            ->acceptedTypes('image/*')
+            ->deletable(false)
+            ->prunable(true)
+            ->withMeta([
+                'acceptedTypes' => 'image/*',
+                'pathPrefix' => Str::replaceLast('//', '/', Storage::disk($this->disk)->url('/')),
+            ]);
     }
 
     /**
@@ -88,14 +87,10 @@ class Files extends Field
             $files = $request->file($requestAttribute);
             foreach ($files as $file) {
                 $model->attachments()
-                    ->create(
-                        [
-                            'path' => $file->store(
-                                $this->getStorageDir(), $this->getStorageDisk()
-                            ),
-                            'type' => $this->options['type'] ?? null,
-                        ]
-                    );
+                    ->create([
+                        'path' => $file->store($this->getStorageDir(), $this->getStorageDisk()),
+                        'type' => $this->options['type'] ?? null,
+                    ]);
             }
         }
     }
