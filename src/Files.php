@@ -43,7 +43,10 @@ class Files extends File
             ->prunable(true)
             ->withMeta([
                 'acceptedTypes' => 'image/*',
-                'pathPrefix' => Str::replaceLast('//', '/', Storage::disk($this->disk)->url('/')),
+                'pathPrefix' => Storage::disk($this->disk)->url('/'),
+                // need this if we are not setting the 'url' for the disk. so this won't be necessary if
+                // for instance we are using DO Spaces and we setup our url to point to the Spaces custom subdomain
+                // 'pathPrefix' => Str::replaceLast('//', '/', Storage::disk($this->disk)->url('/')),
             ]);
     }
 
