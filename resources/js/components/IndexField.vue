@@ -1,7 +1,14 @@
 <template>
     <div>
         <template v-if="field.value && field.value.length">
-            <img v-for="(image, index) in field.value" :key="'_fm_' + image.id" :src="field.pathPrefix + image.path" class="align-bottom inline rounded-full" @click="showLightbox(image.attachable_id, index)" />
+            <img
+                loading="lazy"
+                v-for="(image, index) in field.value"
+                :key="'_fm_' + image.id"
+                :src="field.pathPrefix + image.path"
+                class="align-bottom inline rounded-full"
+                @click="showLightbox(image.attachable_id, index)"
+            />
         </template>
         <span v-else>&mdash;</span>
 
