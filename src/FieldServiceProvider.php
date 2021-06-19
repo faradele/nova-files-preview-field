@@ -17,7 +17,7 @@ class FieldServiceProvider extends ServiceProvider
     {
         Nova::serving(function (ServingNova $event) {
             Nova::script('files', __DIR__.'/../dist/js/field.js');
-            Nova::style('files', __DIR__.'/../dist/css/field.css');
+            // Nova::style('files', __DIR__.'/../dist/css/field.css');
         });
     }
 
