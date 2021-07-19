@@ -3,7 +3,6 @@
 namespace Faradele\Files;
 
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\File;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -42,11 +41,9 @@ class Files extends File
             ->deletable(false)
             ->prunable(true)
             ->withMeta([
+                'vapor' => false,
                 'acceptedTypes' => 'image/*',
                 'pathPrefix' => Storage::disk($this->disk)->url('/'),
-                // need this if we are not setting the 'url' for the disk. so this won't be necessary if
-                // for instance we are using DO Spaces and we setup our url to point to the Spaces custom subdomain
-                // 'pathPrefix' => Str::replaceLast('//', '/', Storage::disk($this->disk)->url('/')),
             ]);
     }
 
@@ -66,35 +63,6 @@ class Files extends File
             // we will have to use plain old global request() helper in
             // our action handle method
             $model->{$this->attribute} = [];
-        }
-    }
-
-    /**
-     * Hydrate the given attribute on the model based on the incoming request.
-     *
-     * @param NovaRequest $request          incoming request
-     * @param string      $requestAttribute the attribute name in the request
-     * @param object      $model            the model
-     * @param string      $attribute        the model attribute itself
-     *
-     * @return void
-     */
-    protected function fillAttributeFromRequest(
-        NovaRequest $request,
-        $requestAttribute,
-        $model,
-        $attribute
-    ) {
-        if ($request->exists($requestAttribute)) {
-            // store the files in the destination folder and move on.
-            $files = $request->file($requestAttribute);
-            foreach ($files as $file) {
-                $model->attachments()
-                    ->create([
-                        'path' => $file->storePublicly($this->getStorageDir(), $this->getStorageDisk()),
-                        'type' => $this->options['type'] ?? null,
-                    ]);
-            }
         }
     }
 }
