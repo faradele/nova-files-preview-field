@@ -12,7 +12,7 @@
             loading="lazy"
             v-for="(image, index) in field.value"
             :key="'_fm_' + image.id"
-            :src="field.pathPrefix + image.path"
+            :src="image.path_url && image.path_url || field.pathPrefix + image.path"
             class="align-bottom inline-block w-full"
             @click="showLightbox(image.attachable_id, index)"
           />

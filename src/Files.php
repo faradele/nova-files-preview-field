@@ -91,7 +91,7 @@ class Files extends File
             foreach ($files as $file) {
                 $model->attachments()
                     ->create([
-                        'path' => $file->store($this->getStorageDir(), $this->getStorageDisk()),
+                        'path' => $file->storePublicly($this->getStorageDir(), $this->getStorageDisk()),
                         'type' => $this->options['type'] ?? null,
                     ]);
             }

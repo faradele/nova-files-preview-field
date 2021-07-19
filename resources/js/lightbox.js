@@ -20,7 +20,7 @@ export default {
             this.currentImageIndex = index
             this.images = this.field.value
                 .filter(entry => entry.attachable_id == this.attachableId)
-                .map(entry => this.field.pathPrefix + entry.path)
+                .map(entry => entry.path_url && entry.path_url || this.field.pathPrefix + entry.path)
 
             this.lightboxVisible = true
         },
