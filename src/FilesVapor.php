@@ -43,6 +43,7 @@ class FilesVapor extends File
             ->rules([
                 'nullable',
                 'attachments' => ['required', 'array'],
+                'attachments.*' => ['json'],
                 'attachments.*.ext' => ['required', 'string'],
                 'attachments.*.key' => ['required', 'string'],
                 'attachments.*.uuid' => ['required', 'uuid'],
