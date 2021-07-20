@@ -19,10 +19,10 @@
             >{{ __('Choose File') }}</label>
         </span>
 
-        <div class="text-red-50 font-bold mt-3 flex align-start" v-show="stillUploadingFiles">
+        <div class="text-red-50 font-bold mt-3 flex align-start" v-show="true || stillUploadingFiles">
             <img
                 style="height: 20px;"
-                src="/loading.gif"
+                ref="loaderImg"
                 alt="Please wait..."
             />
             <div class="pl-2">Uploading {{ selectedFiles.length - completedUploads.length }} file(s). Please wait...</div>
@@ -56,6 +56,9 @@ export default {
         stillUploadingFiles: Boolean,
         selectedFiles: Array,
         completedUploads: Array,
+    },
+    mounted() {
+        this.$refs.loaderImg.setAttribute('src', __webpack_public_path__ + 'vendor/files/images/loading.gif')
     }
 }
 </script>
