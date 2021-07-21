@@ -54,6 +54,9 @@ export default {
 
             for (let index = 0; index < e.target.files.length; index++) {
                 let file = e.target.files[index]
+                if (this.selectedFiles.findIndex(f => f.name === file.name) != -1) {
+                    return Nova.error("Image already selected")
+                }
                 let count = this.selectedFiles.push({
                     objUrl: URL.createObjectURL(file),
                     name: file.name,
