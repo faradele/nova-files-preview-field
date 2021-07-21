@@ -67,7 +67,8 @@ export default {
         uploadToStorage(file, selectionIndex) {
             let entry = this.selectedFiles[selectionIndex]
             Vapor.store(file, {
-                visibility: 'public-read',
+                // we'll make it public when copying the file to its final destination on the server
+                // visibility: 'public-read',
                 progress: progress => {
                     entry.progress = Math.round(progress * 100);
                 }
