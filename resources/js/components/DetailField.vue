@@ -39,10 +39,6 @@ export default {
     props: ['resource', 'resourceName', 'resourceId', 'field'],
 
     mixins: [lightboxImpl],
-
-    mounted() {
-        // console.log(this.field)
-    }
 }
 </script>
 

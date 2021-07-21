@@ -30,10 +30,6 @@ export default {
     props: ['resourceName', 'field'],
 
     mixins: [lightboxImpl],
-
-    created() {
-        console.log(this.field)
-    }
 }
 </script>
 
