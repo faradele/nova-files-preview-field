@@ -19,7 +19,7 @@
             >{{ __('Choose File') }}</label>
         </span>
 
-        <div class="text-red-50 font-bold mt-3 flex align-start" v-show="true || stillUploadingFiles">
+        <div class="text-red-50 font-bold mt-3 flex align-start" v-show="stillUploadingFiles">
             <img
                 style="height: 20px;"
                 ref="loaderImg"
