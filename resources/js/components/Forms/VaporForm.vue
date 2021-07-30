@@ -58,7 +58,7 @@ export default {
         completedUploads: Array,
     },
     mounted() {
-        this.$refs.loaderImg.setAttribute('src', window.ASSET_URL || '' + '/vendor/files/images/loading.gif')
+        this.$refs.loaderImg.setAttribute('src', Nova.config.assetUrl + '/vendor/files/images/loading.gif')
     }
 }
 </script>
