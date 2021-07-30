@@ -84,6 +84,9 @@ export default {
                     key: response.key,
                     ext: response.extension
                 })
+            }).catch(error => {
+                Nova.error("Upload failed.")
+                this.selectedFiles.splice(selectionIndex, 1)
             });
         },
     },
