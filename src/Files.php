@@ -32,11 +32,11 @@ class Files extends File
      * @param  callable|null  $storageCallback
      * @return void
      */
-    public function __construct($name, $attribute = null, $disk = 'public', $storageCallback = null)
+    public function __construct($name, $attribute = null, $disk = null, $storageCallback = null)
     {
         parent::__construct($name, $attribute, $disk, $storageCallback);
 
-        $this->disk(config('filesystems.default'))
+        $this->disk($disk ?? config('filesystems.default'))
             ->acceptedTypes('image/*')
             ->deletable(false)
             ->prunable(true)
