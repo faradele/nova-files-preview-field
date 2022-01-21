@@ -65,6 +65,8 @@ export default {
                 })
                 this.uploadToStorage(file, count - 1)
             }
+
+            e.target.value = null
         },
 
         uploadToStorage(file, selectionIndex) {
