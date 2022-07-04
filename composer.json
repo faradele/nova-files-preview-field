@@ -16,8 +16,8 @@
         "php": ">=7.1.0"
     },
     "require-dev": {
-        "illuminate/support": "^6.0|^7.0",
-        "laravel/framework": "^6.0|^7.0",
+        "illuminate/support": "^6.0|^7.0|^8.0",
+        "laravel/framework": "^6.0|^7.0|^8.0",
         "laravel/nova": "^4.0"
     },
     "autoload": {
