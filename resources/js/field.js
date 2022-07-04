@@ -1,5 +1,9 @@
-Nova.booting((Vue, router, store) => {
-    Vue.component('index-files', require('./components/IndexField'))
-    Vue.component('detail-files', require('./components/DetailField'))
-    Vue.component('form-files', require('./components/FormField'))
+import IndexField from './components/IndexField'
+import DetailField from './components/DetailField'
+import FormField from './components/FormField'
+
+Nova.booting((app, store) => {
+    app.component('index-files', IndexField)
+    app.component('detail-files', DetailField)
+    app.component('form-files', FormField)
 })

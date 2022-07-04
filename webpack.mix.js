@@ -1,10 +1,17 @@
-let mix = require('laravel-mix')
+  let mix = require('laravel-mix')
+  let path = require('path')
 
-mix
-  .setPublicPath('dist')
-  .js('resources/js/field.js', 'js')
-  .sass('resources/sass/field.scss', 'css')
+  require('./nova.mix')
 
-  if (mix.inProduction()) {
+  mix
+    .setPublicPath('dist')
+    .js('resources/js/field.js', 'js')
+    .vue({ version: 3 })
+    .css('resources/css/field.css', 'css')
+    .alias({
+      '@': path.join(__dirname, 'resources/js/'),
+    })
+    .nova('{{ name }}')
+if (mix.inProduction()) {
     mix.version()
-  }
+}
