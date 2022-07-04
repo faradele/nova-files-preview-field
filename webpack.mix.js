@@ -7,7 +7,7 @@
     .setPublicPath('dist')
     .js('resources/js/field.js', 'js')
     .vue({ version: 3 })
-    // .sass('resources/css/field.scss', 'css')
+    // .sass('resources/sass/field.scss', 'css')
     .alias({
       '@': path.join(__dirname, 'resources/js/'),
     })

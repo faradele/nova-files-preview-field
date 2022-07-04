@@ -12,7 +12,6 @@
     },
     "devDependencies": {
         "@vue/compiler-sfc": "^3.2.22",
-        "cross-env": "^5.0.0",
         "laravel-mix": "^6.0.41",
         "laravel-vapor": "^0.4.2",
         "postcss": "^8.3.11",
