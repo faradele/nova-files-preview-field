@@ -12,6 +12,7 @@
       '@': path.join(__dirname, 'resources/js/'),
     })
     .nova('{{ name }}')
+
 if (mix.inProduction()) {
     mix.version()
 }

@@ -6,3 +6,9 @@ On the index page, the images are represented with tiny thumbnails that can be c
 
 ### NOTE
 This is untested and probably not worth using in any serious project. This was made to scratch a very specific itch.
+
+
+### Build
+```js
+docker run --rm -it -v $(pwd):/app -w /app -p 3000:3000  node:lts-alpine npm run prod
+```
