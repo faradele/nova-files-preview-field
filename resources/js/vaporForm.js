@@ -91,5 +91,5 @@ export default {
                 this.selectedFiles.splice(selectionIndex, 1)
             });
         },
-    },
+    }
 }

@@ -1,23 +1,17 @@
 <template>
     <div>
-        <span class="form-file mr-4" :class="{ 'opacity-75': isReadonly }">
-            <input
-                ref="fileField"
-                :dusk="field.attribute"
-                class="form-file-input select-none"
-                type="file"
-                multiple
-                :id="idAttr"
-                name="name"
-                @change="fileChange"
-                :disabled="isReadonly"
-                :accept="field.acceptedTypes"
-            />
-            <label
-                :for="labelFor"
-                class="form-file-btn btn btn-default btn-primary select-none"
-            >{{ __('Choose File') }}</label>
-        </span>
+        <input
+            ref="fileField"
+            :dusk="field.attribute"
+            class="w-full form-control form-input form-input-bordered py-3 h-auto"
+            type="file"
+            multiple
+            :id="idAttr"
+            name="name"
+            @change="fileChange"
+            :disabled="isReadonly"
+            :accept="field.acceptedTypes"
+        />
 
         <span class="text-gray-50 select-none">{{ currentLabel }}</span>
 
