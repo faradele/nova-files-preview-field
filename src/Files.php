@@ -36,6 +36,10 @@ class Files extends File
     {
         parent::__construct($name, $attribute, $disk, $storageCallback);
 
+        // * ensure there is only a single '/' at the end of the path prefix
+        $pathPrefix = trim(Storage::disk($this->disk)->url('/'), '/').'/';
+
+
         $this->disk($disk ?? config('filesystems.default'))
             ->acceptedTypes('image/*')
             ->deletable(false)
@@ -43,7 +47,7 @@ class Files extends File
             ->withMeta([
                 'vapor' => false,
                 'acceptedTypes' => 'image/*',
-                'pathPrefix' => Storage::disk($this->disk)->url('/'),
+                'pathPrefix' => $pathPrefix,
             ]);
     }
 
