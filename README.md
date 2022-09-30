@@ -1,8 +1,8 @@
 ### Nova Image Preview Field
 
-This simple package adds a field to nova for showing a collection of uploaded images both on the index (table view) and show pages.
+This simple package adds a field to nova for showing a collection of images both on the index (table view) and detail pages.
 
-On the index page, the images are represented with tiny thumbnails that can be clicked to open a lightbox while the same behaviour applies on the show page except the thumbnails are bigger.
+On the index page, the images are represented with tiny thumbnails that will open a lightbox when clicked, while the same behaviour applies on the details page except the thumbnails are bigger.
 
 ### NOTE
 This is untested and probably not worth using in any serious project. This was made to scratch a very specific itch.
@@ -23,15 +23,11 @@ This is untested and probably not worth using in any serious project. This was m
     },
 ]
 ```
+
 Then run `composer update`
 
 ### Sample Usage - With external image urls
 In the nova resource class add the definition below into your `fields` or `fieldsForIndex` method.
-
-To display the attachments images for a record, generate an array that contains one item for each image to display.
-- `id` - This could easily be the images array index. It just needs to be unique per item in the array
-- `attachable_id` - This must be the same for all images that are related to the same parent. For instance, if the images to be shown are related to a trade with an id 17, then 17 must be the `attachable_id` value for every item in the array.
-- `path_url` - The full url to the image
 
 ```php
 use Faradele\Files\Files;
@@ -48,3 +44,11 @@ Files::make(
     ]]
 )->showOnIndex()
 ```
+
+To display the attachments images for a record, you must generate an array that contains one item for each image to display as shown in the snippet above.
+
+The keys in the array are described below:
+
+- `id` - This could easily be the images array index. It just needs to be unique per item in the array
+- `attachable_id` - This must be the same for all images that are related to the same parent. For instance, if the images to be shown are related to a trade with an id 17, then 17 must be the `attachable_id` value for every item in the array.
+- `path_url` - The full url to the image
