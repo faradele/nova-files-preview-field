@@ -14,8 +14,10 @@
         </div>
         <span v-if="! field.value || ! field.value.length">&mdash;</span>
 
+        <!-- we can use #modals or just body as target elements for teleportation -->
         <vue-easy-lightbox
             moveDisabled
+            teleport="#modals"
             :visible="lightboxVisible"
             :imgs="images"
             :index="currentImageIndex"

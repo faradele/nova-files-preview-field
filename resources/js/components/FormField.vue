@@ -37,7 +37,7 @@
 </template>
 
 <script>
-    import { FormField, HandlesValidationErrors, Errors } from "laravel-nova";
+    import { FormField, HandlesValidationErrors } from "laravel-nova";
     const Vapor = require('laravel-vapor')
 
     import VaporForm from './Forms/VaporForm.vue'
@@ -59,7 +59,7 @@
 
         data() {
             return {
-                uploadErrors: new Errors(),
+
             }
         },
 
