@@ -22,6 +22,7 @@
             :imgs="images"
             :index="currentImageIndex"
             @hide="hideLightBox"
+            @on-index-change="handleLightboxIndexChange"
         >
         </vue-easy-lightbox>
     </div>

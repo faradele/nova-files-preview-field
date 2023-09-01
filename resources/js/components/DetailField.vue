@@ -7,15 +7,19 @@
     </div>
     <div class="md:w-3/4 md:py-3 break-all lg:break-words">
       <slot name="value">
-        <p v-if="field.value.length" class="text-90">
-          <img
-            loading="lazy"
-            v-for="(image, index) in field.value"
-            :key="'_fm_' + image.id"
-            :src="image.path_url && image.path_url || field.pathPrefix + image.path"
-            class="align-bottom inline-block w-full"
-            @click="showLightbox(image.attachable_id, index)"
-          />
+        <p v-if="field.value.length" class="text-90 flex flex-row">
+            <div style="margin-left: 0.5rem;"
+                v-for="(image, index) in field.value"
+                :key="'_fm_' + image.id"
+            >
+                <img
+                  loading="lazy"
+                  :src="image.path_url && image.path_url || field.pathPrefix + image.path"
+                  class="align-bottom inline-block w-full"
+                  @click="showLightbox(image.attachable_id, index)"
+                />
+                <div>Media #{{ image.id }}</div>
+            </div>
         </p>
         <p v-else>&mdash;</p>
       </slot>
@@ -27,6 +31,7 @@
         :imgs="images"
         :index="currentImageIndex"
         @hide="hideLightBox"
+        @on-index-change="handleLightboxIndexChange"
     >
     </vue-easy-lightbox>
   </div>

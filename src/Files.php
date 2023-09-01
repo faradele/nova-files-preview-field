@@ -51,6 +51,13 @@ class Files extends File
             ]);
     }
 
+    public function withLogViewHistory()
+    {
+        return $this->withMeta([
+            'logViewHistory' => FieldServiceProvider::$logImageViewHistoryCallback !== null,
+        ]);
+    }
+
     /**
      * Hydrate the given attribute on the model based on the incoming request.
      *
