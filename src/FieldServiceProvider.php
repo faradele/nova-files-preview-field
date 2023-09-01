@@ -57,6 +57,6 @@ class FieldServiceProvider extends ServiceProvider
                 }
             // * block help ensure that the requests come in one after the other
             // * to account for when the lightbox is opened multiple times for the same image.
-            })->block(10, 30);
+            })->block(10, 60);
     }
 }
