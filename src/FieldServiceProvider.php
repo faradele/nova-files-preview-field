@@ -55,8 +55,9 @@ class FieldServiceProvider extends ServiceProvider
 
                     return call_user_func(static::$logImageViewHistoryCallback, request());
                 }
-            // * block help ensure that the requests come in one after the other
-            // * to account for when the lightbox is opened multiple times for the same image.
-            })->block(10, 60);
+            });
+            // // * block help ensure that the requests come in one after the other
+            // // * to account for when the lightbox is opened multiple times for the same image.
+            // ->block(10, 60 * 5);
     }
 }
