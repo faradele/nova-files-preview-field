@@ -15,9 +15,10 @@
         <span v-if="! field.value || ! field.value.length">&mdash;</span>
 
         <!-- we can use #modals or just body as target elements for teleportation -->
+        <!-- UPDATE: do not use the teleport="#xyz" option. It was the source of a long-standing bug I just got fixed -->
+
         <vue-easy-lightbox
             moveDisabled
-            teleport="#modals"
             :visible="lightboxVisible"
             :imgs="images"
             :index="currentImageIndex"
