@@ -15,6 +15,7 @@ class FieldServiceProvider extends ServiceProvider
 
     public static bool $mediaIDIsString = false;
     public static bool $attachableMediaIDIsString = false;
+    public static ?string $blankImageURL = null;
 
     public static function setLogImageViewHistoryCallback(Closure $callback): void
     {

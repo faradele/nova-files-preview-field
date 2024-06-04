@@ -2,6 +2,7 @@
 
 namespace Faradele\Files;
 
+use Faradele\Files\FieldServiceProvider;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\File;
@@ -48,6 +49,7 @@ class Files extends File
                 'vapor' => false,
                 'acceptedTypes' => 'image/*',
                 'pathPrefix' => $pathPrefix,
+                'blankImageURL' => FieldServiceProvider::$blankImageURL ?? '/vendor/files/images/blank.jpeg',
             ]);
     }
 
@@ -71,6 +73,13 @@ class Files extends File
         return $this->withMeta([
             'isResourcePreviewModal' => $value,
             'disablePreviewModal' => $value,
+        ]);
+    }
+
+    public function maskUnopenedImages(bool $value = true): self
+    {
+        return $this->withMeta([
+            'maskUnopenedImages' => $value,
         ]);
     }
 

@@ -2,14 +2,26 @@
     <div>
         <div class="flex flex-wrap">
             <template v-if="field.value && field.value.length">
-                <img
-                    loading="lazy"
-                    v-for="(image, index) in field.value"
-                    :key="'_fm_' + image.id"
-                    :src="image.path_url && image.path_url || field.pathPrefix + image.path"
-                    class="align-bottom inline rounded-full"
-                    @click="showLightbox(image.attachable_id, index)"
-                />
+                <template v-if="field.maskUnopenedImages">
+                    <img
+                        loading="lazy"
+                        v-for="(image, index) in field.value"
+                        :key="'_fm_' + image.id"
+                        :src="field.blankImageURL"
+                        class="align-bottom inline rounded-full"
+                        alt="Blank placeholder images"
+                    />
+                </template>
+                <template v-if="! field.maskUnopenedImages">
+                    <img
+                        loading="lazy"
+                        v-for="(image, index) in field.value"
+                        :key="'_fm_' + image.id"
+                        :src="image.path_url && image.path_url || field.pathPrefix + image.path"
+                        class="align-bottom inline rounded-full"
+                        @click="showLightbox(image.attachable_id, index)"
+                    />
+                </template>
             </template>
         </div>
         <span v-if="! field.value || ! field.value.length">&mdash;</span>

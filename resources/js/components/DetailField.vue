@@ -13,6 +13,14 @@
                 :key="'_fm_' + image.id"
             >
                 <img
+                    v-if="field.maskUnopenedImages"
+                    loading="lazy"
+                    :src="field.blankImageURL"
+                    class="align-bottom inline-block w-full"
+                    alt="Blank placeholder images"
+                />
+                <img
+                  v-if="! maskUnopenedImages"
                   loading="lazy"
                   :src="image.path_url && image.path_url || field.pathPrefix + image.path"
                   class="align-bottom inline-block w-full"
