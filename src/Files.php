@@ -58,7 +58,7 @@ class Files extends File
         ]);
     }
 
-    public function disableOnResourcePreview(bool $isResourcePreviewModal = false)
+    public function disableLightboxOnResourcePreview(bool $isResourcePreviewModal = false)
     {
         return $this->withMeta([
             'isResourcePreviewModal' => $isResourcePreviewModal,
@@ -66,10 +66,10 @@ class Files extends File
         ]);
     }
 
-    public function disablePreviewModal(bool $isResourcePreviewModal = false)
+    public function disablePreviewModal()
     {
         return $this->withMeta([
-            'isResourcePreviewModal' => $isResourcePreviewModal,
+            'isResourcePreviewModal' => true,
             'disablePreviewModal' => true,
         ]);
     }

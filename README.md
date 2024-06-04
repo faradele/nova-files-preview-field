@@ -47,6 +47,10 @@ Files::make(
 
 **Remember to add `->showOnIndex` or the field won't be available on the index table view**
 
+Use ```->disableLightboxOnResourcePreview($request->isResourcePreviewRequest())``` to make sure the lightbox preview doesn't show when displaying the resources in the nova resource preview modal.
+
+Use ```disablePreviewModal()``` to make sure the lightbox preview is never shown especially on index resource table.
+
 To display the attachments images for a record, you must generate an array that contains one item for each image to display as shown in the snippet above.
 
 The keys in the array are described below:
