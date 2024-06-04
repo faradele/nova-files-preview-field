@@ -30,7 +30,7 @@
                         @click="showLightbox(image.attachable_id, index)"
                     />
                 </template>
-                <div>{{ (image && image.label) ? image.label : "Media #" + image.id }}</div>
+                <div style="margin-top: 5px;">{{ (image && image.label) ? image.label : "Media #" + image.id }}</div>
             </div>
         </p>
         <p v-else>&mdash;</p>
