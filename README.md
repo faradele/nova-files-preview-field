@@ -35,7 +35,10 @@ Files::make(
     'Attachments',
     fn () => [[
         'id' => 0,
+        'label' => 'label', // optional label when image is shown in lightbox
         'attachable_id' => 17,
+        // * attachable_type is required only when using the media view log feature
+        'attachable_type' => \App\Models\Trade::class,
         'path_url' => 'https://www.motorbiscuit.com/wp-content/uploads/2021/02/Tesla-Roadster.jpg',
     ], [
         'id' => 1,
@@ -56,8 +59,17 @@ To display the attachments images for a record, you must generate an array that 
 The keys in the array are described below:
 
 - `id` - This could easily be the images array index. It just needs to be unique per item in the array
+- `label` - Optional descriptive text to show below the image on details and in the lightbox modal window.
 - `attachable_id` - This must be the same for all images that are related to the same parent. For instance, if the images to be shown are related to a trade with an id 17, then 17 must be the `attachable_id` value for every item in the array.
+- `attachable_type` - Optional. Required when using the media view log feature.
 - `path_url` - The full url to the image
+
+#### Media View Log
+This package can also record an entry in the database when any of the shown images is opened in its full form in the lightbox modal. This could be good for keeping track of who viewed an image and might have seen the image content.
+
+This requires a lot more code and configuration to be done in your main application code outside of this package.
+
+TODO: write more documentation on how to do this
 
 ### Local Dev
 When working with nova 4, always remember to run `npm --prefix='vendor/laravel/nova' ci` after installing dependencies AND before running a build command.

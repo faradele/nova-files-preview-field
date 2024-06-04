@@ -18,7 +18,8 @@
                   class="align-bottom inline-block w-full"
                   @click="showLightbox(image.attachable_id, index)"
                 />
-                <div>Media #{{ image.id }}</div>
+                <div>Media #{{ new }}</div>
+                <div>{{ media && media.label ? media.label : "Media #" + media.id }}</div>
             </div>
         </p>
         <p v-else>&mdash;</p>
