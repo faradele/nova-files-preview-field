@@ -45,6 +45,8 @@ Files::make(
 )->showOnIndex()
 ```
 
+**Remember to add `->showOnIndex` or the field won't be available on the index table view**
+
 To display the attachments images for a record, you must generate an array that contains one item for each image to display as shown in the snippet above.
 
 The keys in the array are described below:

@@ -58,6 +58,14 @@ class Files extends File
         ]);
     }
 
+    public function disableOnResourcePreview(bool $isResourcePreviewModal = false)
+    {
+        return $this->withMeta([
+            'isResourcePreviewModal' => $isResourcePreviewModal,
+            'disablePreviewModal' => false,
+        ]);
+    }
+
     public function disablePreviewModal(bool $isResourcePreviewModal = false)
     {
         return $this->withMeta([
