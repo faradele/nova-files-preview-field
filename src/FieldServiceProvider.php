@@ -13,6 +13,7 @@ class FieldServiceProvider extends ServiceProvider
 {
     public static Closure|null $logImageViewHistoryCallback = null;
 
+    public static bool $mediaIDIsString = false;
     public static bool $attachableMediaIDIsString = false;
 
     public static function setLogImageViewHistoryCallback(Closure $callback): void
@@ -49,9 +50,9 @@ class FieldServiceProvider extends ServiceProvider
             ->post('/nova-vendor/nova-files-preview-field/log-view', function (Request $request) {
                 if (static::$logImageViewHistoryCallback) {
                     $request->validate([
-                        'attachable_id' => ['required', 'integer'],
+                        'attachable_id' => ['required', static::$attachableMediaIDIsString ? 'string' : 'integer'],
                         'attachable_type' => ['required', 'string'],
-                        'media_id' => ['required', static::$attachableMediaIDIsString ? 'string' : 'integer'],
+                        'media_id' => ['required', static::$mediaIDIsString ? 'string' : 'integer'],
                         'viewed_at' => ['required', 'date'],
                     ]);
 
