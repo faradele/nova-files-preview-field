@@ -58,6 +58,14 @@ class Files extends File
         ]);
     }
 
+    public function disablePreviewModal(bool $isResourcePreviewModal = false)
+    {
+        return $this->withMeta([
+            'isResourcePreviewModal' => $isResourcePreviewModal,
+            'disablePreviewModal' => true,
+        ]);
+    }
+
     /**
      * Hydrate the given attribute on the model based on the incoming request.
      *

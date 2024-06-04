@@ -16,6 +16,13 @@ export default {
 
     methods: {
         showLightbox(attachable_id, index) {
+            if (this.field && this.field.disablePreviewModal) {
+                return;
+            }
+            if (this.field && this.field.isResourcePreviewModal) {
+                return
+            }
+
             this.attachableId = attachable_id
             this.currentImageIndex = index
 
