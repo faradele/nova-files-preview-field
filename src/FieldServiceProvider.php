@@ -13,6 +13,8 @@ class FieldServiceProvider extends ServiceProvider
 {
     public static Closure|null $logImageViewHistoryCallback = null;
 
+    public static bool $attachableMediaIDIsString = false;
+
     public static function setLogImageViewHistoryCallback(Closure $callback): void
     {
         static::$logImageViewHistoryCallback = $callback;
@@ -49,7 +51,7 @@ class FieldServiceProvider extends ServiceProvider
                     $request->validate([
                         'attachable_id' => ['required', 'integer'],
                         'attachable_type' => ['required', 'string'],
-                        'media_id' => ['required', 'integer'],
+                        'media_id' => ['required', static::$attachableMediaIDIsString ? 'string' : 'integer'],
                         'viewed_at' => ['required', 'date'],
                     ]);
 
