@@ -41,8 +41,8 @@ export default {
 
 <style scoped>
     img {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2rem;
+        height: 2rem;
         padding-left: 3px;
         object-fit: cover;
         margin-top: 3px;
