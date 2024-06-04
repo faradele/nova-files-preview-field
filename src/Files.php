@@ -51,14 +51,14 @@ class Files extends File
             ]);
     }
 
-    public function withLogViewHistory(bool $value = true)
+    public function withLogViewHistory(bool $value = true): self
     {
         return $this->withMeta([
             'logViewHistory' => $value && FieldServiceProvider::$logImageViewHistoryCallback !== null,
         ]);
     }
 
-    public function disableLightboxOnResourcePreview(bool $isResourcePreviewModal = false)
+    public function disableLightboxOnResourcePreview(bool $isResourcePreviewModal = false): self
     {
         return $this->withMeta([
             'isResourcePreviewModal' => $isResourcePreviewModal,
@@ -66,7 +66,7 @@ class Files extends File
         ]);
     }
 
-    public function disablePreviewModal(bool $value = true)
+    public function disablePreviewModal(bool $value = true): self
     {
         return $this->withMeta([
             'isResourcePreviewModal' => $value,
