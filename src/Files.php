@@ -38,7 +38,11 @@ class Files extends File
         parent::__construct($name, $attribute, $disk, $storageCallback);
 
         // * ensure there is only a single '/' at the end of the path prefix
-        $pathPrefix = trim(Storage::disk($this->disk)->url('/'), '/').'/';
+        // ! Calling Storage::disk('xxx')->url() with '' or '/' now leads to an error
+        // ! so we have to scrap this pathPrefix stuff for now.
+        // ! The component will still work as long as we are passing the 'path_url' in the
+        // ! array of image data we provide to the component.
+        // $pathPrefix = trim(Storage::disk($this->disk)->url('/'), '/').'/';
 
 
         $this->disk($disk ?? config('filesystems.default'))
@@ -48,7 +52,7 @@ class Files extends File
             ->withMeta([
                 'vapor' => false,
                 'acceptedTypes' => 'image/*',
-                'pathPrefix' => $pathPrefix,
+                'pathPrefix' => $pathPrefix ?? '/',
                 'blankImageURL' => FieldServiceProvider::$blankImageURL ?? '/vendor/files/images/blank.jpeg',
             ]);
     }
