@@ -8,7 +8,7 @@
         "hot": "mix watch --hot",
         "prod": "npm run production",
         "production": "mix --production",
-        "nova:install": "npm --prefix='../../vendor/laravel/nova' ci"
+        "nova:install": "npm --prefix='/workspaces/prestmit/vendor/laravel/nova' ci"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.16.11",
@@ -19,6 +19,8 @@
         "laravel-vapor": "^0.4.2",
         "postcss": "^8.4.5",
         "vue-easy-lightbox": "^1.9.0",
-        "vue-loader": "^16.8.3"
+        "vue-loader": "^16.8.3",
+        "form-backend-validation": "^2.3.3",
+        "lodash": "^4.17.21"
     }
 }

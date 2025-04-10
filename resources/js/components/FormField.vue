@@ -28,8 +28,6 @@
             :currentLabel="reg_currentLabel"
             :labelFor="labelFor"
             :fileChange="fileChange"
-            :firstError="firstError"
-            :hasError="hasError"
             />
       </slot>
     </div>
@@ -38,7 +36,7 @@
 
 <script>
     import { FormField, HandlesValidationErrors } from "laravel-nova";
-    const Vapor = require('laravel-vapor')
+    // const Vapor = require('laravel-vapor')
 
     import VaporForm from './Forms/VaporForm.vue'
     import RegularForm from './Forms/RegularForm.vue'
