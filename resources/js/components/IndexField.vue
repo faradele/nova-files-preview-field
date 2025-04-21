@@ -10,7 +10,7 @@
                         :src="field.blankImageURL"
                         class="align-bottom inline rounded-full"
                         alt="Blank placeholder images"
-                        @click="showLightbox(image.attachable_id, index)"
+                        @click.prevent="showLightbox(image.attachable_id, index)"
                     />
                 </template>
                 <template v-if="! field.maskUnopenedImages">
@@ -21,7 +21,7 @@
                         :src="image.path_url && image.path_url || field.pathPrefix + image.path"
                         class="align-bottom inline rounded-full"
                         :alt="image.id"
-                        @click="showLightbox(image.attachable_id, index)"
+                        @click.prevent="showLightbox(image.attachable_id, index)"
                     />
                 </template>
             </template>
